@@ -1,0 +1,172 @@
+2023-04-24 05:09:23,370 INFO    StreamThr :8316 [internal.py:wandb_internal():87] W&B internal server running at pid: 8316, started at: 2023-04-24 05:09:23.369622
+2023-04-24 05:09:23,373 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: status
+2023-04-24 05:09:23,397 INFO    WriterThread:8316 [datastore.py:open_for_write():85] open: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\run-cmw4chzl.wandb
+2023-04-24 05:09:23,398 DEBUG   SenderThread:8316 [sender.py:send():336] send: header
+2023-04-24 05:09:23,462 DEBUG   SenderThread:8316 [sender.py:send():336] send: run
+2023-04-24 05:09:24,115 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: check_version
+2023-04-24 05:09:24,118 INFO    SenderThread:8316 [dir_watcher.py:__init__():216] watching files in: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files
+2023-04-24 05:09:24,118 INFO    SenderThread:8316 [sender.py:_start_run_threads():1067] run started: cmw4chzl with start time 1682293163.37714
+2023-04-24 05:09:24,118 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: summary_record
+2023-04-24 05:09:24,118 INFO    SenderThread:8316 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-04-24 05:09:24,120 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: check_version
+2023-04-24 05:09:24,436 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: run_start
+2023-04-24 05:09:24,468 DEBUG   HandlerThread:8316 [system_info.py:__init__():31] System info init
+2023-04-24 05:09:24,468 DEBUG   HandlerThread:8316 [system_info.py:__init__():46] System info init done
+2023-04-24 05:09:24,468 INFO    HandlerThread:8316 [system_monitor.py:start():151] Starting system monitor
+2023-04-24 05:09:24,469 INFO    SystemMonitor:8316 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2023-04-24 05:09:24,469 INFO    HandlerThread:8316 [system_monitor.py:probe():172] Collecting system info
+2023-04-24 05:09:24,474 INFO    SystemMonitor:8316 [interfaces.py:start():168] Started cpu
+2023-04-24 05:09:24,475 INFO    SystemMonitor:8316 [interfaces.py:start():168] Started disk
+2023-04-24 05:09:24,475 INFO    SystemMonitor:8316 [interfaces.py:start():168] Started gpu
+2023-04-24 05:09:24,476 INFO    SystemMonitor:8316 [interfaces.py:start():168] Started memory
+2023-04-24 05:09:24,483 INFO    SystemMonitor:8316 [interfaces.py:start():168] Started network
+2023-04-24 05:09:24,493 ERROR   gpu       :8316 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-04-24 05:09:24,494 DEBUG   HandlerThread:8316 [system_info.py:probe():195] Probing system
+2023-04-24 05:09:24,495 DEBUG   HandlerThread:8316 [system_info.py:_probe_git():180] Probing git
+2023-04-24 05:09:24,616 DEBUG   HandlerThread:8316 [system_info.py:_probe_git():188] Probing git done
+2023-04-24 05:09:24,616 DEBUG   HandlerThread:8316 [system_info.py:probe():241] Probing system done
+2023-04-24 05:09:24,616 DEBUG   HandlerThread:8316 [system_monitor.py:probe():181] {'os': 'Windows-10-10.0.25309-SP0', 'python': '3.9.6', 'heartbeatAt': '2023-04-23T23:39:24.494542', 'startedAt': '2023-04-23T23:39:23.316081', 'docker': None, 'cuda': None, 'args': None, 'state': 'running', 'program': '<python with no main file>', 'git': {'remote': 'https://github.com/palashbehra5/cs6910_assignment3.git', 'commit': 'f28fdfab82ca1b2b809b05a760162f5afa8540da'}, 'email': '40783095+palashbehra5@users.noreply.github.com', 'root': 'C:/Users/palas/Desktop/IOT/cs6910_assignment3', 'host': 'MSI', 'username': 'palas', 'executable': 'c:\\Users\\palas\\AppData\\Local\\Programs\\Python\\Python39\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2592.0, 'min': 0.0, 'max': 2592.0}, 'cpu_freq_per_core': [{'current': 2592.0, 'min': 0.0, 'max': 2592.0}], 'disk': {'total': 237.17675399780273, 'used': 202.4680290222168}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.824417114257812}}
+2023-04-24 05:09:24,616 INFO    HandlerThread:8316 [system_monitor.py:probe():182] Finished collecting system info
+2023-04-24 05:09:24,616 INFO    HandlerThread:8316 [system_monitor.py:probe():185] Publishing system info
+2023-04-24 05:09:24,616 DEBUG   HandlerThread:8316 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-04-24 05:09:24,617 DEBUG   HandlerThread:8316 [system_info.py:_save_pip():67] Saving pip packages done
+2023-04-24 05:09:24,618 INFO    HandlerThread:8316 [system_monitor.py:probe():187] Finished publishing system info
+2023-04-24 05:09:24,633 DEBUG   SenderThread:8316 [sender.py:send():336] send: files
+2023-04-24 05:09:24,634 INFO    SenderThread:8316 [sender.py:_save_file():1321] saving file wandb-metadata.json with policy now
+2023-04-24 05:09:24,661 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-24 05:09:24,661 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: stop_status
+2023-04-24 05:09:24,977 DEBUG   SenderThread:8316 [sender.py:send():336] send: telemetry
+2023-04-24 05:09:24,978 DEBUG   SenderThread:8316 [sender.py:send():336] send: telemetry
+2023-04-24 05:09:24,978 DEBUG   SenderThread:8316 [sender.py:send():336] send: run
+2023-04-24 05:09:25,120 INFO    Thread-17 :8316 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\config.yaml
+2023-04-24 05:09:25,120 INFO    Thread-17 :8316 [dir_watcher.py:_on_file_created():275] file/dir created: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\requirements.txt
+2023-04-24 05:09:25,121 INFO    Thread-17 :8316 [dir_watcher.py:_on_file_created():275] file/dir created: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\wandb-metadata.json
+2023-04-24 05:09:25,121 INFO    Thread-17 :8316 [dir_watcher.py:_on_file_created():275] file/dir created: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\wandb-summary.json
+2023-04-24 05:09:25,297 INFO    SenderThread:8316 [sender.py:send_run():944] updated run: cmw4chzl
+2023-04-24 05:09:25,297 DEBUG   SenderThread:8316 [sender.py:send():336] send: telemetry
+2023-04-24 05:09:25,297 DEBUG   SenderThread:8316 [sender.py:send():336] send: exit
+2023-04-24 05:09:25,297 INFO    SenderThread:8316 [sender.py:send_exit():559] handling exit code: 1
+2023-04-24 05:09:25,298 INFO    SenderThread:8316 [sender.py:send_exit():561] handling runtime: 0
+2023-04-24 05:09:25,298 INFO    SenderThread:8316 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-04-24 05:09:25,298 INFO    SenderThread:8316 [sender.py:send_exit():567] send defer
+2023-04-24 05:09:25,298 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,299 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 0
+2023-04-24 05:09:25,299 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,299 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 0
+2023-04-24 05:09:25,299 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 1
+2023-04-24 05:09:25,299 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,299 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 1
+2023-04-24 05:09:25,299 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,299 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 1
+2023-04-24 05:09:25,299 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 2
+2023-04-24 05:09:25,300 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,300 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 2
+2023-04-24 05:09:25,300 INFO    HandlerThread:8316 [system_monitor.py:finish():161] Stopping system monitor
+2023-04-24 05:09:25,300 DEBUG   SystemMonitor:8316 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2023-04-24 05:09:25,309 DEBUG   SystemMonitor:8316 [system_monitor.py:_start():137] Finished system metrics aggregation loop
+2023-04-24 05:09:25,309 DEBUG   SystemMonitor:8316 [system_monitor.py:_start():141] Publishing last batch of metrics
+2023-04-24 05:09:25,309 INFO    HandlerThread:8316 [interfaces.py:finish():175] Joined cpu
+2023-04-24 05:09:25,318 INFO    HandlerThread:8316 [interfaces.py:finish():175] Joined disk
+2023-04-24 05:09:25,346 INFO    HandlerThread:8316 [interfaces.py:finish():175] Joined gpu
+2023-04-24 05:09:25,346 INFO    HandlerThread:8316 [interfaces.py:finish():175] Joined memory
+2023-04-24 05:09:25,346 INFO    HandlerThread:8316 [interfaces.py:finish():175] Joined network
+2023-04-24 05:09:25,346 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,346 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 2
+2023-04-24 05:09:25,346 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 3
+2023-04-24 05:09:25,347 DEBUG   SenderThread:8316 [sender.py:send():336] send: stats
+2023-04-24 05:09:25,347 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,347 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 3
+2023-04-24 05:09:25,347 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,347 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 3
+2023-04-24 05:09:25,347 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 4
+2023-04-24 05:09:25,347 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,347 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 4
+2023-04-24 05:09:25,348 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,348 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 4
+2023-04-24 05:09:25,348 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 5
+2023-04-24 05:09:25,348 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,348 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 5
+2023-04-24 05:09:25,348 DEBUG   SenderThread:8316 [sender.py:send():336] send: summary
+2023-04-24 05:09:25,349 INFO    SenderThread:8316 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-04-24 05:09:25,349 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,349 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 5
+2023-04-24 05:09:25,349 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 6
+2023-04-24 05:09:25,349 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,349 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 6
+2023-04-24 05:09:25,349 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,349 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 6
+2023-04-24 05:09:25,352 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: status_report
+2023-04-24 05:09:25,569 INFO    wandb-upload_0:8316 [upload_job.py:push():138] Uploaded file C:\Users\palas\AppData\Local\Temp\tmp_3zptjyswandb\h8a7w9g0-wandb-metadata.json
+2023-04-24 05:09:25,669 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 7
+2023-04-24 05:09:25,669 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,669 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 7
+2023-04-24 05:09:25,669 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,669 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 7
+2023-04-24 05:09:25,669 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 8
+2023-04-24 05:09:25,671 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,671 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 8
+2023-04-24 05:09:25,671 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,671 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 8
+2023-04-24 05:09:25,671 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 9
+2023-04-24 05:09:25,671 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:25,671 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 9
+2023-04-24 05:09:25,671 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:25,671 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 9
+2023-04-24 05:09:25,672 INFO    SenderThread:8316 [dir_watcher.py:finish():362] shutting down directory watcher
+2023-04-24 05:09:25,685 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: poll_exit
+2023-04-24 05:09:26,119 INFO    Thread-17 :8316 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\config.yaml
+2023-04-24 05:09:26,120 INFO    SenderThread:8316 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\wandb-summary.json
+2023-04-24 05:09:26,120 INFO    SenderThread:8316 [dir_watcher.py:finish():392] scan: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files
+2023-04-24 05:09:26,120 INFO    SenderThread:8316 [dir_watcher.py:finish():406] scan save: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\config.yaml config.yaml
+2023-04-24 05:09:26,120 INFO    SenderThread:8316 [dir_watcher.py:finish():406] scan save: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\requirements.txt requirements.txt
+2023-04-24 05:09:26,122 INFO    SenderThread:8316 [dir_watcher.py:finish():406] scan save: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\wandb-metadata.json wandb-metadata.json
+2023-04-24 05:09:26,123 INFO    SenderThread:8316 [dir_watcher.py:finish():406] scan save: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\wandb-summary.json wandb-summary.json
+2023-04-24 05:09:26,123 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 10
+2023-04-24 05:09:26,123 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: poll_exit
+2023-04-24 05:09:26,125 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:26,125 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 10
+2023-04-24 05:09:26,128 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:26,129 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 10
+2023-04-24 05:09:26,129 INFO    SenderThread:8316 [file_pusher.py:finish():162] shutting down file pusher
+2023-04-24 05:09:26,685 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: poll_exit
+2023-04-24 05:09:26,685 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: poll_exit
+2023-04-24 05:09:26,953 INFO    wandb-upload_2:8316 [upload_job.py:push():138] Uploaded file c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\wandb-summary.json
+2023-04-24 05:09:26,995 INFO    wandb-upload_1:8316 [upload_job.py:push():138] Uploaded file c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\requirements.txt
+2023-04-24 05:09:27,015 INFO    wandb-upload_0:8316 [upload_job.py:push():138] Uploaded file c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\files\config.yaml
+2023-04-24 05:09:27,216 INFO    Thread-16 :8316 [sender.py:transition_state():587] send defer: 11
+2023-04-24 05:09:27,216 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:27,216 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 11
+2023-04-24 05:09:27,216 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:27,216 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 11
+2023-04-24 05:09:27,217 INFO    SenderThread:8316 [file_pusher.py:join():167] waiting for file pusher
+2023-04-24 05:09:27,217 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 12
+2023-04-24 05:09:27,217 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:27,217 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 12
+2023-04-24 05:09:27,217 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:27,217 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 12
+2023-04-24 05:09:27,688 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: poll_exit
+2023-04-24 05:09:27,913 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 13
+2023-04-24 05:09:27,914 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: poll_exit
+2023-04-24 05:09:27,914 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:27,914 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 13
+2023-04-24 05:09:27,914 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:27,914 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 13
+2023-04-24 05:09:27,915 INFO    SenderThread:8316 [sender.py:transition_state():587] send defer: 14
+2023-04-24 05:09:27,915 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: defer
+2023-04-24 05:09:27,915 INFO    HandlerThread:8316 [handler.py:handle_request_defer():170] handle defer: 14
+2023-04-24 05:09:27,915 DEBUG   SenderThread:8316 [sender.py:send():336] send: final
+2023-04-24 05:09:27,915 DEBUG   SenderThread:8316 [sender.py:send():336] send: footer
+2023-04-24 05:09:27,915 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: defer
+2023-04-24 05:09:27,915 INFO    SenderThread:8316 [sender.py:send_request_defer():583] handle sender defer: 14
+2023-04-24 05:09:27,916 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: poll_exit
+2023-04-24 05:09:27,916 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: server_info
+2023-04-24 05:09:27,916 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: get_summary
+2023-04-24 05:09:27,917 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: poll_exit
+2023-04-24 05:09:27,917 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: sampled_history
+2023-04-24 05:09:27,917 DEBUG   SenderThread:8316 [sender.py:send_request():363] send_request: server_info
+2023-04-24 05:09:28,497 DEBUG   HandlerThread:8316 [handler.py:handle_request():144] handle_request: shutdown
+2023-04-24 05:09:28,497 INFO    HandlerThread:8316 [handler.py:finish():841] shutting down handler
+2023-04-24 05:09:28,918 INFO    WriterThread:8316 [datastore.py:close():299] close: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230424_050923-cmw4chzl\run-cmw4chzl.wandb
+2023-04-24 05:09:29,497 INFO    SenderThread:8316 [sender.py:finish():1493] shutting down sender
+2023-04-24 05:09:29,497 INFO    SenderThread:8316 [file_pusher.py:finish():162] shutting down file pusher
+2023-04-24 05:09:29,497 INFO    SenderThread:8316 [file_pusher.py:join():167] waiting for file pusher

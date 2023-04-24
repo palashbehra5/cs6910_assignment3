@@ -1,0 +1,18 @@
+wandb_version: 1
+
+bidirectional:
+  value: 0
+cell_type:
+  value: GRU
+dropout:
+  value: 0.2
+hidden_layer_size:
+  value: 64
+input_embedding_size:
+  value: 128
+num_decoder_layers:
+  value: 1
+num_encoder_layers:
+  value: 2
+teacher_forcing:
+  value: 0.5
