@@ -1,166 +1,203 @@
-import torch.nn as nn
 import torch
+import torch.nn as nn
 import random
+import itertools
+from tqdm import tqdm
 
-class Encoder(nn.Module):
+class seq2seq(nn.Module):
 
-    def __init__(self, vocab_size, embedding_dim, hidden_dim, num_layers, dropout, cell_type, bidirectional):
-        super(Encoder, self).__init__()
+    def __init__(self, vocab_size, embedding_dim, hidden_dim, num_layers_encoder, num_layers_decoder, 
+                 dropout, bidirectional, encoder_cell_type, decoder_cell_type, teacher_forcing, 
+                 batch_size, max_seq_size, debugging = False):
 
-        self.vocab_size = vocab_size
+        super(seq2seq, self).__init__()
+
+        self.output_size = vocab_size
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
-        self.num_layers = num_layers
+        self.num_layers_encoder = num_layers_encoder
+        self.num_layers_decoder = num_layers_decoder
         self.dropout_prob = dropout
-        self.cell_type = cell_type.upper()
         self.bidirectional = bidirectional
-
-        self.dropout = nn.Dropout(self.dropout_prob)
-        self.embedding = nn.Embedding(num_embeddings = self.vocab_size, embedding_dim = self.embedding_dim)
-
-        if self.cell_type == 'RNN':
-            self.rnn = nn.RNN(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=self.num_layers, batch_first=True, dropout=self.dropout_prob, bidirectional=bool(self.bidirectional))
-        elif self.cell_type == 'LSTM':
-            self.rnn = nn.LSTM(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=self.num_layers, batch_first=True, dropout=self.dropout_prob, bidirectional=bool(self.bidirectional))
-        elif self.cell_type == 'GRU':
-            self.rnn = nn.GRU(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=self.num_layers, batch_first=True, dropout=self.dropout_prob, bidirectional=bool(self.bidirectional))
-        else:
-            raise ValueError(f"Unsupported cell_type '{self.cell_type}'. Supported types: 'RNN', 'LSTM', 'GRU'.")
-
-    def forward(self, x):
-        # x has shape (batch_size, seq_len)
-
-        # Calculate embedding
-        embedding = self.dropout(self.embedding(x))
-
-        # Pass embedding through RNN
-        output, hidden = self.rnn(embedding)
-
-        # Apply dropout to hidden state
-        if self.cell_type == 'LSTM':
-            hidden = tuple([self.dropout(h) for h in hidden])
-        else:
-            hidden = self.dropout(hidden)
-
-        return hidden
-
-
-class Decoder(nn.Module):
-
-    def __init__(self, vocab_size, embedding_dim, hidden_dim, num_layers, dropout, cell_type, bidirectional, teacher_forcing):
-        super(Decoder, self).__init__()
-
-        self.vocab_size = vocab_size
-        self.embedding_dim = embedding_dim
-        self.hidden_dim = hidden_dim
-        self.num_layers = num_layers
-        self.dropout_prob = dropout
-        self.cell_type = cell_type.upper()
-        self.bidirectional = bidirectional
+        self.encoder_cell_type = encoder_cell_type
+        self.decoder_cell_type = decoder_cell_type
         self.teacher_forcing_prob = teacher_forcing
+        self.debugging = debugging
+        self.batch_size = batch_size
+        self.max_seq_size = max_seq_size
 
         self.dropout = nn.Dropout(self.dropout_prob)
-        self.embedding = nn.Embedding(num_embeddings=self.vocab_size, embedding_dim=self.embedding_dim)
+        self.embedding_encoder = nn.Embedding(num_embeddings=self.output_size, embedding_dim=self.embedding_dim)
+        self.embedding_decoder = nn.Embedding(num_embeddings=self.output_size, embedding_dim=self.embedding_dim) 
 
-        if self.cell_type == 'RNN':
-            self.rnn = nn.RNN(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=self.num_layers, batch_first=True, dropout=self.dropout_prob, bidirectional=bool(self.bidirectional))
-        elif self.cell_type == 'LSTM':
-            self.rnn = nn.LSTM(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=self.num_layers, batch_first=True, dropout=self.dropout_prob, bidirectional=bool(self.bidirectional))
-        elif self.cell_type == 'GRU':
-            self.rnn = nn.GRU(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=self.num_layers, batch_first=True, dropout=self.dropout_prob, bidirectional=bool(self.bidirectional))
+        self.rnn_encoder = self.cell(num_layers_encoder, encoder_cell_type, bool(self.bidirectional))
+        self.rnn_decoder = self.cell(num_layers_decoder, decoder_cell_type, 0)
+
+        # Final layer for calculating probabilities
+        self.fc1 = nn.Linear(self.hidden_dim, self.output_size)
+
+    def cell(self, num_layers, cell_type, bidirectional):
+
+        # Defining Cells
+        cells = {
+
+            "LSTM" : nn.LSTM(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=num_layers, batch_first=True, 
+                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)),
+
+            "GRU" : nn.GRU(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=num_layers, batch_first=True, 
+                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)),
+
+            "RNN" : nn.RNN(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=num_layers, batch_first=True, 
+                            dropout=self.dropout_prob, bidirectional=bool(bidirectional))
+
+        }
+
+        return cells[cell_type]
+    
+
+    def initialize_decoder_state(self, encoder_cell_type, encoder_state, encoder_cell, decoder_cell_type, bidirectional,
+                             num_decoder_layers, num_encoder_layers):
+
+        batch_size = encoder_state[0].size(0)  # Get the batch size from the encoder states
+
+        if encoder_cell_type == "LSTM":
+            if bidirectional:
+                forward_state, backward_state = encoder_state[:num_encoder_layers], encoder_state[num_encoder_layers:]
+                forward_cell, backward_cell = encoder_cell[:num_encoder_layers], encoder_cell[num_encoder_layers:]
+                encoder_state = (torch.mean(forward_state, dim=0) + torch.mean(backward_state, dim=0)) / 2
+                encoder_cell = (torch.mean(forward_cell, dim=0) + torch.mean(backward_cell, dim=0)) / 2
+            else:
+                encoder_state = torch.mean(encoder_state, dim=0)
+                encoder_cell = torch.mean(encoder_cell, dim=0) if decoder_cell_type == "LSTM" else None
         else:
-            raise ValueError(f"Unsupported cell_type '{self.cell_type}'. Supported types: 'RNN', 'LSTM', 'GRU'.")
+            forward_state = encoder_state[:num_encoder_layers]
+            backward_state = encoder_state[num_encoder_layers:] if bidirectional else None
+            encoder_state = (torch.mean(forward_state, dim=0) + torch.mean(backward_state, dim=0)) / 2 if bidirectional else torch.mean(forward_state, dim=0)
+            encoder_cell = None
 
-        self.fc = nn.Linear(self.hidden_dim, self.vocab_size)
+        decoder_state = encoder_state.unsqueeze(0).expand(num_decoder_layers, batch_size, -1)
 
-    def forward(self, x, hidden):
-        # x has shape (batch_size, seq_len)
-        # teacher_forcing_prob is the probability of using teacher forcing
-        teacher_forcing_prob = self.teacher_forcing_prob
+        if decoder_cell_type == "LSTM":
+            decoder_cell = decoder_state
+        else:
+            decoder_cell = None
 
-        # Calculate embedding
-        embedding = self.embedding(x)
+        return decoder_state, decoder_cell
 
-        print(x.shape)
-        # Initialize outputs tensor
-        batch_size, seq_len, _ = x.shape
 
-        outputs = torch.zeros(batch_size, seq_len, self.vocab_size).to(x.device)
+    # Each forward pass of out network is defined for (batch_size , max_seq_size)
+    def forward(self, x, y):
 
-        # Initialize input word
-        input_word = embedding[:, 0, :]
+        num_layers_decoder = self.num_layers_decoder
+        num_layers_encoder = self.num_layers_encoder
+        batch_size = self.batch_size
+        output_size = self.output_size
+        hidden_dim = self.hidden_dim
+        num_directions = 2 if self.bidirectional else 1
+        SOS_TOKEN = 128
 
-        # Loop over sequence length
-        for t in range(1, seq_len):
-            # Decide whether to use teacher forcing or not
-            use_teacher_forcing = random.random() < teacher_forcing_prob
+        # Calculate embedding first
+        # (batch_size , max_sequence_length) -> (batch_size , max_sequence_length, embedding_dimension)
+        x = self.embedding_encoder(x)
 
-            # Use previous output as input if teacher forcing is not used
-            if not use_teacher_forcing:
-                input_word = output.argmax(dim=2)[:, t-1]
-                input_word = self.embedding(input_word)
+        if(self.encoder_cell_type == "LSTM") : encoder_output, (encoder_hidden, encoder_cell) = self.rnn_encoder(x)
 
-            # Pass input word and hidden state through RNN
-            output, hidden = self.rnn(input_word.unsqueeze(1), hidden)
+        # hidden_state : (num_directions * num_layers , batch_size , hidden_state_size)
+        else : 
+            
+            encoder_output, encoder_hidden = self.rnn_encoder(x)
+            encoder_cell = None
 
-            # Apply dropout to output
-            output = self.dropout(output)
+        decoder_state, decoder_cell= self.initialize_decoder_state(self.encoder_cell_type, encoder_hidden, encoder_cell, self.decoder_cell_type, 
+                                                                   self.bidirectional,  num_layers_decoder, num_layers_encoder)
+        
+        decoder_inputs = torch.full((batch_size, 1), SOS_TOKEN)
 
-            # Pass output through linear layer
-            output = self.fc(output.squeeze(1))
+        decoder_outputs = torch.empty((self.max_seq_size, batch_size, self.output_size))
+        
+        for t in range(self.max_seq_size):
+            
+            decoder_inputs = self.embedding_decoder(decoder_inputs)
 
-            # Append output to outputs tensor
-            outputs[:, t, :] = output
+            if self.decoder_cell_type == "LSTM":
+                decoder_output, (decoder_state, decoder_cell) = self.rnn_decoder(decoder_inputs, (decoder_state, decoder_cell))
+            else:
+                decoder_output, decoder_state = self.rnn_decoder(decoder_inputs, decoder_state)
+                decoder_cell = None
 
-            # Update input word
+            if(num_layers_decoder > 1 ) : decoder_output = self.dropout(decoder_output)
+
+            decoder_outputs[t] = self.fc1(decoder_output).squeeze(dim=1)
+            
+            # Determine whether to use teacher forcing or predicted output
+            use_teacher_forcing = random.random() < self.teacher_forcing_prob
+            
+            # Obtain the next input to the decoder
             if use_teacher_forcing:
-                input_word = embedding[:, t, :]
 
-        return outputs, hidden
+                decoder_inputs = y[:, t].unsqueeze(0)  # Use ground truth input
 
+            else:
 
+                #print(decoder_outputs[t].shape)
+                indices = torch.argmax(decoder_outputs[t], dim=1)
+                
+                #print(indices.shape)
+                decoder_inputs = indices.unsqueeze(dim=1)
+                #print("Non Teacher Forcing : ", decoder_inputs.shape)
 
-class Seq2Seq(nn.Module):
-    def __init__(self, encoder, decoder, device, teacher_forcing_ratio):
-        super(Seq2Seq, self).__init__()
-        self.encoder = encoder
-        self.decoder = decoder
-        self.device = device
-        self.teacher_forcing_ratio = teacher_forcing_ratio
-        
-    def forward(self, src, trg):
-        # src shape: (src_len, batch_size)
-        # trg shape: (trg_len, batch_size)
-        # teacher_forcing_ratio is the probability to use teacher forcing
-        batch_size = trg.shape[1]
-        trg_len = trg.shape[0]
-        trg_vocab_size = self.decoder.vocab_size
-        teacher_forcing_ratio = self.teacher_forcing_ratio
-        
-        # initialize output tensor
-        outputs = torch.zeros(trg_len, batch_size, trg_vocab_size).to(self.device)
-        
-        # encoder output
-        encoder_output, hidden = self.encoder(src)
-        
-        # decoder input is always <sos>
-        input = trg[0, :]
-        
-        for t in range(1, trg_len):
-            # decoder output
-            output, hidden = self.decoder(input, hidden)
-            outputs[t] = output
-            
-            # decide whether to use teacher forcing or not
-            teacher_force = random.random() < teacher_forcing_ratio
-            
-            # get the highest predicted token from our outputs
-            top1 = output.argmax(1)
-            
-            # if teacher forcing, use actual next token as next input
-            # if not, use predicted token
-            input = trg[t] if teacher_force and t < trg_len else top1
-        
-        return outputs
+            if (decoder_inputs.shape[0]!= batch_size) : decoder_inputs = decoder_inputs.transpose(0,1)
 
+        return decoder_outputs
+    
 
+def compare_sequences(batch1, batch2):
+    """
+    Compare two batches of sequences and return the number of sequences that are exactly the same.
+
+    Args:
+        batch1 (torch.Tensor): Batch of sequences of shape [batch_size, max_seq_length].
+        batch2 (torch.Tensor): Batch of sequences of shape [batch_size, max_seq_length, vocab_size].
+
+    Returns:
+        int: Number of sequences that are exactly the same.
+    """
+    # Get the predicted sequences by finding the index of the maximum probability
+
+    device = batch1.device
+    batch2 = batch2.to(device)
+
+    predicted_sequences = torch.argmax(batch2, dim=2)
+
+    # Compare the predicted sequences with the ground truth sequences
+    num_same_sequences = torch.sum(torch.all(batch1 == predicted_sequences, dim=1)).item()
+
+    return num_same_sequences
+
+def test_model_instance(configs):
+
+    count = 0
+
+    VOCAB_SIZE = 131
+    BATCH_SIZE = 4
+    MAX_SEQ_SIZE = 28
+
+    source = torch.randint(low=0, high=VOCAB_SIZE, size=(BATCH_SIZE, MAX_SEQ_SIZE))
+    target = torch.randint(low=0, high=VOCAB_SIZE, size=(BATCH_SIZE, MAX_SEQ_SIZE))
+
+    configs = list(itertools.product(*configs.values()))
+
+    for config in tqdm(configs):
+
+        input_embedding_size, num_encoder_layers, num_decoder_layers, hidden_layer_size, cell_type_encoder, cell_type_decoder, bidirectional, dropout, teacher_forcing = config
+    
+        # Create an instance of the seq2seq model using the parameter values
+        model = seq2seq(VOCAB_SIZE, input_embedding_size, hidden_layer_size, num_encoder_layers, num_decoder_layers,
+                   dropout, bidirectional, cell_type_encoder, cell_type_decoder, teacher_forcing,
+                   BATCH_SIZE, MAX_SEQ_SIZE, debugging=False)
+
+        output = model(source, target)
+
+        if(output.shape[0]==BATCH_SIZE and output.shape[1]==MAX_SEQ_SIZE and output.shape[2]==VOCAB_SIZE) : count+=1
+        
+    print("PASSED {} CONFIGS.".format(count))
