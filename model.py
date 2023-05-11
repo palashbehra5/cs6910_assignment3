@@ -4,6 +4,8 @@ import random
 import itertools
 from tqdm import tqdm
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 class seq2seq(nn.Module):
 
     def __init__(self, vocab_size, embedding_dim, hidden_dim, num_layers_encoder, num_layers_decoder, 
@@ -27,8 +29,8 @@ class seq2seq(nn.Module):
         self.max_seq_size = max_seq_size
 
         self.dropout = nn.Dropout(self.dropout_prob)
-        self.embedding_encoder = nn.Embedding(num_embeddings=self.output_size, embedding_dim=self.embedding_dim)
-        self.embedding_decoder = nn.Embedding(num_embeddings=self.output_size, embedding_dim=self.embedding_dim) 
+        self.embedding_encoder = nn.Embedding(num_embeddings=self.output_size, embedding_dim=self.embedding_dim).to(device)
+        self.embedding_decoder = nn.Embedding(num_embeddings=self.output_size, embedding_dim=self.embedding_dim).to(device)
 
         self.rnn_encoder = self.cell(num_layers_encoder, encoder_cell_type, bool(self.bidirectional))
         self.rnn_decoder = self.cell(num_layers_decoder, decoder_cell_type, 0)
@@ -42,13 +44,13 @@ class seq2seq(nn.Module):
         cells = {
 
             "LSTM" : nn.LSTM(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=num_layers, batch_first=True, 
-                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)),
+                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)).to(device),
 
             "GRU" : nn.GRU(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=num_layers, batch_first=True, 
-                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)),
+                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)).to(device),
 
             "RNN" : nn.RNN(input_size=self.embedding_dim, hidden_size=self.hidden_dim, num_layers=num_layers, batch_first=True, 
-                            dropout=self.dropout_prob, bidirectional=bool(bidirectional))
+                            dropout=self.dropout_prob, bidirectional=bool(bidirectional)).to(device)
 
         }
 
@@ -88,6 +90,9 @@ class seq2seq(nn.Module):
     # Each forward pass of out network is defined for (batch_size , max_seq_size)
     def forward(self, x, y):
 
+        x.to(device)
+        y.to(device)
+
         num_layers_decoder = self.num_layers_decoder
         num_layers_encoder = self.num_layers_encoder
         batch_size = self.batch_size
@@ -111,18 +116,18 @@ class seq2seq(nn.Module):
         decoder_state, decoder_cell= self.initialize_decoder_state(self.encoder_cell_type, encoder_hidden, encoder_cell, self.decoder_cell_type, 
                                                                    self.bidirectional,  num_layers_decoder, num_layers_encoder)
         
-        decoder_inputs = torch.full((batch_size, 1), SOS_TOKEN)
+        decoder_inputs = torch.full((batch_size, 1), SOS_TOKEN).to(device)
 
-        decoder_outputs = torch.empty((self.max_seq_size, batch_size, self.output_size))
+        decoder_outputs = torch.empty((self.max_seq_size, batch_size, self.output_size)).to(device)
         
         for t in range(self.max_seq_size):
             
-            decoder_inputs = self.embedding_decoder(decoder_inputs)
-
+            decoder_inputs = self.embedding_decoder(decoder_inputs.to(device))
+        
             if self.decoder_cell_type == "LSTM":
-                decoder_output, (decoder_state, decoder_cell) = self.rnn_decoder(decoder_inputs, (decoder_state, decoder_cell))
+                decoder_output, (decoder_state, decoder_cell) = self.rnn_decoder(decoder_inputs, (decoder_state.contiguous(), decoder_cell.contiguous()))
             else:
-                decoder_output, decoder_state = self.rnn_decoder(decoder_inputs, decoder_state)
+                decoder_output, decoder_state = self.rnn_decoder(decoder_inputs, decoder_state.contiguous())
                 decoder_cell = None
 
             if(num_layers_decoder > 1 ) : decoder_output = self.dropout(decoder_output)
@@ -141,12 +146,14 @@ class seq2seq(nn.Module):
 
                 #print(decoder_outputs[t].shape)
                 indices = torch.argmax(decoder_outputs[t], dim=1)
-                
+
                 #print(indices.shape)
                 decoder_inputs = indices.unsqueeze(dim=1)
                 #print("Non Teacher Forcing : ", decoder_inputs.shape)
 
             if (decoder_inputs.shape[0]!= batch_size) : decoder_inputs = decoder_inputs.transpose(0,1)
+
+        decoder_outputs = decoder_outputs.transpose(0, 1)
 
         return decoder_outputs
     
@@ -182,8 +189,8 @@ def test_model_instance(configs):
     BATCH_SIZE = 4
     MAX_SEQ_SIZE = 28
 
-    source = torch.randint(low=0, high=VOCAB_SIZE, size=(BATCH_SIZE, MAX_SEQ_SIZE))
-    target = torch.randint(low=0, high=VOCAB_SIZE, size=(BATCH_SIZE, MAX_SEQ_SIZE))
+    source = torch.randint(low=0, high=VOCAB_SIZE, size=(BATCH_SIZE, MAX_SEQ_SIZE)).to(device)
+    target = torch.randint(low=0, high=VOCAB_SIZE, size=(BATCH_SIZE, MAX_SEQ_SIZE)).to(device)
 
     configs = list(itertools.product(*configs.values()))
 
@@ -194,8 +201,8 @@ def test_model_instance(configs):
         # Create an instance of the seq2seq model using the parameter values
         model = seq2seq(VOCAB_SIZE, input_embedding_size, hidden_layer_size, num_encoder_layers, num_decoder_layers,
                    dropout, bidirectional, cell_type_encoder, cell_type_decoder, teacher_forcing,
-                   BATCH_SIZE, MAX_SEQ_SIZE, debugging=False)
-
+                   BATCH_SIZE, MAX_SEQ_SIZE, debugging=False).to(device)
+        
         output = model(source, target)
 
         if(output.shape[0]==BATCH_SIZE and output.shape[1]==MAX_SEQ_SIZE and output.shape[2]==VOCAB_SIZE) : count+=1
