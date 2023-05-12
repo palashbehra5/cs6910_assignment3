@@ -1,0 +1,29 @@
+2023-05-12 15:11:10,157 INFO    Thread-10 :44768 [wandb_setup.py:_flush():68] Configure stats pid to 44768
+2023-05-12 15:11:10,157 INFO    Thread-10 :44768 [wandb_setup.py:_flush():68] Loading settings from C:\Users\palas\.config\wandb\settings
+2023-05-12 15:11:10,157 INFO    Thread-10 :44768 [wandb_setup.py:_flush():68] Loading settings from c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\settings
+2023-05-12 15:11:10,157 INFO    Thread-10 :44768 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True', 'project': 'dummy_runs', 'entity': 'nihil666', 'root_dir': 'c:\\Users\\palas\\Desktop\\IOT\\cs6910_assignment3', 'sweep_id': '2ohvvbpy', 'run_id': 'wfhe3dpv', 'sweep_param_path': 'c:\\Users\\palas\\Desktop\\IOT\\cs6910_assignment3\\wandb\\sweep-2ohvvbpy\\config-wfhe3dpv.yaml'}
+2023-05-12 15:11:10,157 INFO    Thread-10 :44768 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-05-12 15:11:10,159 INFO    Thread-10 :44768 [wandb_init.py:_log_setup():492] Logging user logs to c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230512_151110-wfhe3dpv\logs\debug.log
+2023-05-12 15:11:10,159 INFO    Thread-10 :44768 [wandb_init.py:_log_setup():493] Logging internal logs to c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230512_151110-wfhe3dpv\logs\debug-internal.log
+2023-05-12 15:11:10,159 INFO    Thread-10 :44768 [wandb_init.py:_jupyter_setup():438] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x00000204C5E88670>
+2023-05-12 15:11:10,160 INFO    Thread-10 :44768 [wandb_init.py:init():532] calling init triggers
+2023-05-12 15:11:10,160 INFO    Thread-10 :44768 [wandb_init.py:init():538] wandb.init called with sweep_config: {'batch_size': 16, 'bidirectional': 0, 'cell_type_decoder': 'GRU', 'cell_type_encoder': 'LSTM', 'dropout': 0, 'hidden_layer_size': 64, 'input_embedding_size': 1024, 'num_decoder_layers': 4, 'num_encoder_layers': 5, 'teacher_forcing': 0.5}
+config: {}
+2023-05-12 15:11:10,160 INFO    Thread-10 :44768 [wandb_init.py:init():588] starting backend
+2023-05-12 15:11:10,160 INFO    Thread-10 :44768 [wandb_init.py:init():592] setting up manager
+2023-05-12 15:11:10,168 INFO    Thread-10 :44768 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-05-12 15:11:10,176 INFO    Thread-10 :44768 [wandb_init.py:init():599] backend started and connected
+2023-05-12 15:11:10,192 INFO    Thread-10 :44768 [wandb_run.py:_config_callback():1250] config_cb None None {'batch_size': 16, 'bidirectional': 0, 'cell_type_decoder': 'GRU', 'cell_type_encoder': 'LSTM', 'dropout': 0, 'hidden_layer_size': 64, 'input_embedding_size': 1024, 'num_decoder_layers': 4, 'num_encoder_layers': 5, 'teacher_forcing': 0.5}
+2023-05-12 15:11:10,192 INFO    Thread-10 :44768 [wandb_run.py:_label_probe_notebook():1203] probe notebook
+2023-05-12 15:11:10,193 INFO    Thread-10 :44768 [wandb_run.py:_label_probe_notebook():1213] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-05-12 15:11:10,193 INFO    Thread-10 :44768 [wandb_init.py:init():687] updated telemetry
+2023-05-12 15:11:10,262 INFO    Thread-10 :44768 [wandb_init.py:init():727] communicating run to backend with 60.0 second timeout
+2023-05-12 15:11:11,296 INFO    Thread-10 :44768 [wandb_run.py:_on_init():2134] communicating current version
+2023-05-12 15:11:11,354 INFO    Thread-10 :44768 [wandb_run.py:_on_init():2143] got version response upgrade_message: "wandb version 0.15.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-05-12 15:11:11,354 INFO    Thread-10 :44768 [wandb_init.py:init():775] starting run threads in backend
+2023-05-12 15:11:11,661 INFO    Thread-10 :44768 [wandb_run.py:_console_start():2114] atexit reg
+2023-05-12 15:11:11,661 INFO    Thread-10 :44768 [wandb_run.py:_redirect():1969] redirect: SettingsConsole.WRAP_RAW
+2023-05-12 15:11:11,661 INFO    Thread-10 :44768 [wandb_run.py:_redirect():2034] Wrapping output streams.
+2023-05-12 15:11:11,662 INFO    Thread-10 :44768 [wandb_run.py:_redirect():2059] Redirects installed.
+2023-05-12 15:11:11,662 INFO    Thread-10 :44768 [wandb_init.py:init():817] run started, returning control to user process

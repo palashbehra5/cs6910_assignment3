@@ -217,10 +217,6 @@ def test_model_instance(configs, mode, batch_size):
         
     print("PASSED {} CONFIGS.".format(count))
 
-import torch
-import torch.nn as nn
-import random
-
 class seq2seq_attn(nn.Module):
 
     def __init__(self, vocab_size, embedding_dim, hidden_dim, num_layers_encoder, num_layers_decoder, 
