@@ -208,11 +208,7 @@ def test_model_instance(configs):
         if(output.shape[0]==BATCH_SIZE and output.shape[1]==MAX_SEQ_SIZE and output.shape[2]==VOCAB_SIZE) : count+=1
         
     print("PASSED {} CONFIGS.".format(count))
-
-import torch
-import torch.nn as nn
-import random
-
+    
 class seq2seq(nn.Module):
 
     def __init__(self, vocab_size, embedding_dim, hidden_dim, num_layers_encoder, num_layers_decoder, 
