@@ -6,6 +6,9 @@ import torch.optim as optim
 from tqdm import tqdm
 import pickle
 
+VOCAB_SIZE = 131
+MAX_SEQ_SIZE = 28
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class seq2seq(nn.Module):
@@ -333,9 +336,9 @@ class seq2seq_attn(nn.Module):
         decoder_inputs = torch.full((batch_size, 1), SOS_TOKEN).to(device)
         decoder_outputs = torch.empty((self.max_seq_size, batch_size, self.output_size)).to(device)
 
-        for t in range(self.max_seq_size):
+        attention_weights = torch.empty((self.max_seq_size, x.size(0), x.size(1))).to(device)
 
-            
+        for t in range(self.max_seq_size):
 
             decoder_inputs = self.embedding_decoder(decoder_inputs.to(device))
 
@@ -355,6 +358,7 @@ class seq2seq_attn(nn.Module):
             attn_weights = attn_weights.squeeze(dim=2)
 
             attn_weights = torch.softmax(attn_weights, dim=1)
+            attention_weights[t] = attn_weights
 
             context_vector = torch.bmm(attn_weights.unsqueeze(1), encoder_output).squeeze(dim=1)
 
@@ -377,7 +381,9 @@ class seq2seq_attn(nn.Module):
                 decoder_inputs = decoder_inputs.transpose(0, 1)
 
         decoder_outputs = decoder_outputs.transpose(0, 1)
-        return decoder_outputs
+        attention_weights = attention_weights.transpose(0, 1)
+
+        return decoder_outputs, attention_weights
     
 # This does not seem to work
 # Go for standard implementation
@@ -474,21 +480,76 @@ class Attention(nn.Module):
         output = self.linear_out(combined).view(batch_size, output_len, dimensions)
         output = self.tanh(output)
 
-        return output, attention_weights
+        return output
     
+def test(model, test_dataset, attention):
+
+    predictions, targets, y_pred, y_true = [], [], [], []
+
+    with open("idx_to_char.pickle", "rb") as file:
+        idx_to_char = pickle.load(file)
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=model.batch_size, shuffle=False)
+    acc = 0
+
+    # Testing Mode
+    model.eval()
+
+    for src,target in test_loader:
+
+        src = src.to(device)
+        target = target.to(device)
+        model = model.to(device)
+
+        # Forward Pass
+        with torch.no_grad():
+
+            if(attention) : outputs, _ = model(src, target)
+            else : outputs = model(src, target)
+
+        acc += compare_sequences(target, outputs)
+
+        predicted_sequences = torch.argmax(outputs, dim=2)
+
+        for seq in predicted_sequences:
+
+            y_pred.append([idx_to_char[idx] for idx in seq.tolist()])
+            predicted_word = ''.join([idx_to_char[idx] for idx in seq.tolist() if (idx != 128 and idx != 129 and idx != 130 )])
+            predictions.append(predicted_word)
+
+        for seq in target:
+
+            y_true.append([idx_to_char[idx] for idx in seq.tolist()])
+            predicted_word = ''.join([idx_to_char[idx] for idx in seq.tolist() if (idx != 128 and idx != 129 and idx != 130 )])
+            targets.append(predicted_word)
+
+    print("Testing accuracy for model : {}".format(acc/len(test_dataset)))
+
+    return predictions, targets, y_pred, y_true
+
 
 def train(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, 
                  DROPOUT, BIDIRECTIONAL, CELL_TYPE_ENCODER, CELL_TYPE_DECODER, TEACHER_FORCING, 
-                 BATCH_SIZE, MAX_SEQ_SIZE, EPOCHS, train_dataset, val_dataset) :
+                 BATCH_SIZE, MAX_SEQ_SIZE, EPOCHS, attention, train_dataset, val_dataset) :
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
-    model = seq2seq(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, 
-                    DROPOUT, BIDIRECTIONAL, CELL_TYPE_ENCODER, CELL_TYPE_DECODER, TEACHER_FORCING, 
-                    BATCH_SIZE, MAX_SEQ_SIZE, debugging = False)
+    if(attention) : 
+        
+        model = seq2seq_attn(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, 
+                        DROPOUT, BIDIRECTIONAL, CELL_TYPE_ENCODER, CELL_TYPE_DECODER, TEACHER_FORCING, 
+                        BATCH_SIZE, MAX_SEQ_SIZE, debugging = False)
+        
+    else :
+
+        model = seq2seq(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, 
+                        DROPOUT, BIDIRECTIONAL, CELL_TYPE_ENCODER, CELL_TYPE_DECODER, TEACHER_FORCING, 
+                        BATCH_SIZE, MAX_SEQ_SIZE, debugging = False)
+
 
     model = model.to(device)
 
@@ -508,7 +569,9 @@ def train(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_
             targets = targets.to(device)
             
             optimizer.zero_grad()
-            outputs = model(inputs, targets)
+
+            if(attention) : outputs, _ = model(inputs, targets)
+            else : outputs = model(inputs, targets)
             
             train_accuracy += compare_sequences(targets, outputs)
 
@@ -527,7 +590,9 @@ def train(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_
             
                 inputs = inputs.to(device)
                 targets = targets.to(device)
-                outputs = model(inputs, targets)
+
+                if(attention) : outputs, _ = model(inputs, targets)
+                else : outputs = model(inputs, targets)
 
                 loss = criterion(outputs.reshape(-1, model.output_size), targets.reshape(-1))
                 val_accuracy += compare_sequences(targets, outputs)
@@ -539,39 +604,3 @@ def train(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_
         torch.cuda.empty_cache()
 
     return model
-
-def test(model, test_dataset):
-
-    predictions, targets = [], []
-
-    with open("idx_to_char.pickle", "rb") as file:
-        idx_to_char = pickle.load(file)
-
-    device = model.device
-    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=model.batch_size, shuffle=False)
-    acc = 0
-
-    for src,target in test_loader:
-
-        src = src.to(device)
-        target = target.to(device)
-
-        pred = model(src)
-        acc += compare_sequences(target, pred)
-
-        predicted_sequences = torch.argmax(pred, dim=2)
-
-        for seq in predicted_sequences:
-
-            predicted_word = ''.join([idx_to_char[idx] for idx in seq if (idx != 128 or idx != 129 or idx != 130 )])
-            predictions.append(predicted_word)
-
-        for seq in target:
-
-            predicted_word = ''.join([idx_to_char[idx] for idx in seq if (idx != 128 or idx != 129 or idx != 130 )])
-            targets.append(predicted_word)
-
-    print("Testing accuracy for model : {}".format(acc/len(test_dataset)))
-
-    return predictions, targets
-
