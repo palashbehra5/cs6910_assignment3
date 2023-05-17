@@ -2,57 +2,58 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import Levenshtein
+from sklearn.metrics import confusion_matrix
+from matplotlib.font_manager import FontProperties
 
-def visualize_string_differences(y_pred, y_test):
-    
-    idx = random.randint(0,len(y_pred))
-    target_string = y_test[idx]
-    source_string = y_pred[idx]
-    HIGHLIGHT_COLOR = '\033[91m'  # Red color for highlighting differences
-    RESET_COLOR = '\033[0m'  # Reset color to default
+def plot_avg_error_vs_length(y_pred, y_true):
 
-    
-    highlighted_string = ''
-    for source_char, target_char in zip(source_string, target_string):
-        if source_char != target_char:
-            highlighted_string += HIGHLIGHT_COLOR + target_char + RESET_COLOR
-        else:
-            highlighted_string += target_char
+    # Calculate the average error for each string
+    avg_errors = {}
+    for pred, true in zip(y_pred, y_true):
+        error = Levenshtein.distance(pred, true)
+        if(len(list(true)) not in avg_errors) : avg_errors[len(list(true))] = [error]
+        else : avg_errors[len(list(true))].append(error)
 
-    
-    if len(source_string) < len(target_string):
-        additional_chars = target_string[len(source_string):]
-        highlighted_string += HIGHLIGHT_COLOR + additional_chars + RESET_COLOR
+    for key in avg_errors:
+        sum = 0
+        for error in avg_errors[key]:
+            sum += error
+        avg_errors[key] = sum/len(avg_errors[key])
 
-    
-    print("Source String:", source_string)
-    print("Target String:", highlighted_string)
-
-def plot_string_differences(target_strings, predicted_strings):
-   
-    distances = np.zeros((len(target_strings), len(predicted_strings)))
-
-    for i, target in enumerate(target_strings):
-        for j, predicted in enumerate(predicted_strings):
-            
-            distance = Levenshtein.distance(target, predicted)
-            distances[i, j] = distance
-
-    
-    fig, ax = plt.subplots()
-    im = ax.imshow(distances, cmap='coolwarm')
-
-   
-    ax.set_xticks(np.arange(len(predicted_strings)))
-    ax.set_yticks(np.arange(len(target_strings)))
-    ax.set_xticklabels(predicted_strings, rotation=45)
-    ax.set_yticklabels(target_strings)
-    ax.tick_params(axis='x', labelsize=8)
-    ax.tick_params(axis='y', labelsize=8)
-
-    cbar = ax.figure.colorbar(im, ax=ax)
-    cbar.ax.set_ylabel('String Distance', rotation=-90, va='bottom')
-
-    ax.set_title('String Differences')
+    plt.scatter(list(avg_errors.keys()), list(avg_errors.values()))
+    plt.xlabel('Length of String')
+    plt.ylabel('Average Error')
+    plt.title('Average Error vs Length of String')
     plt.show()
 
+
+def plot_confusion_matrix(y_pred, y_true):
+
+    font_prop = FontProperties(fname='Mangal 400.ttf', size=12)
+
+    # Get all unique characters
+    characters = sorted(set(char for word in y_pred + y_true for char in word))
+
+    # Create character-to-index mapping
+    char_to_index = {char: i for i, char in enumerate(characters)}
+
+    # Convert y_pred and y_true to character index lists
+    y_pred_indices = [[char_to_index[char] for char in word] for word in y_pred]
+    y_true_indices = [[char_to_index[char] for char in word] for word in y_true]
+
+    # Create confusion matrix
+    conf_mat = confusion_matrix([char for word in y_true_indices for char in word],
+                                [char for word in y_pred_indices for char in word])
+
+    fig, ax = plt.subplots(figsize=(30,30))
+
+    im = ax.imshow(conf_mat[3:,3:], cmap='Blues')
+    ax.set_xticks(range(len(characters[3:])))
+    ax.set_yticks(range(len(characters[3:])))
+
+    ax.set_xticklabels(characters[3:], fontproperties=font_prop)
+    ax.set_yticklabels(characters[3:], fontproperties=font_prop)
+
+    plt.xticks(fontproperties=font_prop)
+    plt.yticks(fontproperties=font_prop)
+    plt.show()
