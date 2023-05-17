@@ -2,7 +2,9 @@ import torch
 import torch.nn as nn
 import random
 import itertools
+import torch.optim as optim
 from tqdm import tqdm
+import pickle
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -473,3 +475,103 @@ class Attention(nn.Module):
         output = self.tanh(output)
 
         return output, attention_weights
+    
+
+def train(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, 
+                 DROPOUT, BIDIRECTIONAL, CELL_TYPE_ENCODER, CELL_TYPE_DECODER, TEACHER_FORCING, 
+                 BATCH_SIZE, MAX_SEQ_SIZE, EPOCHS, train_dataset, val_dataset) :
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=True)
+
+    model = seq2seq(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, 
+                    DROPOUT, BIDIRECTIONAL, CELL_TYPE_ENCODER, CELL_TYPE_DECODER, TEACHER_FORCING, 
+                    BATCH_SIZE, MAX_SEQ_SIZE, debugging = False)
+
+    model = model.to(device)
+
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters())
+
+    for epoch in range(EPOCHS):
+        
+        model.train()
+        running_loss = 0.0
+        train_accuracy = 0
+        val_accuracy = 0
+        
+        for batch_idx, (inputs, targets) in tqdm(enumerate(train_loader)):
+            
+            inputs = inputs.to(device)
+            targets = targets.to(device)
+            
+            optimizer.zero_grad()
+            outputs = model(inputs, targets)
+            
+            train_accuracy += compare_sequences(targets, outputs)
+
+            loss = criterion(outputs.reshape(-1, model.output_size), targets.reshape(-1))
+            loss.backward()
+            optimizer.step()
+            
+            running_loss += loss.item()
+        
+
+        model.eval()
+        val_loss = 0.0
+        
+        with torch.no_grad():
+            for inputs, targets in tqdm(val_loader):
+            
+                inputs = inputs.to(device)
+                targets = targets.to(device)
+                outputs = model(inputs, targets)
+
+                loss = criterion(outputs.reshape(-1, model.output_size), targets.reshape(-1))
+                val_accuracy += compare_sequences(targets, outputs)
+                
+                val_loss += loss.item()
+        
+        print(f"Epoch [{epoch+1}/{EPOCHS}], Validation Loss: {val_loss / len(val_loader)}")
+        print("Training Accuracy {0}, Validation Accuracy {1}".format(train_accuracy/(len(train_dataset)), val_accuracy/(len(val_dataset))))
+        torch.cuda.empty_cache()
+
+    return model
+
+def test(model, test_dataset):
+
+    predictions, targets = [], []
+
+    with open("idx_to_char.pickle", "rb") as file:
+        idx_to_char = pickle.load(file)
+
+    device = model.device
+    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=model.batch_size, shuffle=False)
+    acc = 0
+
+    for src,target in test_loader:
+
+        src = src.to(device)
+        target = target.to(device)
+
+        pred = model(src)
+        acc += compare_sequences(target, pred)
+
+        predicted_sequences = torch.argmax(pred, dim=2)
+
+        for seq in predicted_sequences:
+
+            predicted_word = ''.join([idx_to_char[idx] for idx in seq if (idx != 128 or idx != 129 or idx != 130 )])
+            predictions.append(predicted_word)
+
+        for seq in target:
+
+            predicted_word = ''.join([idx_to_char[idx] for idx in seq if (idx != 128 or idx != 129 or idx != 130 )])
+            targets.append(predicted_word)
+
+    print("Testing accuracy for model : {}".format(acc/len(test_dataset)))
+
+    return predictions, targets
+

@@ -1,0 +1,22 @@
+wandb_version: 1
+
+batch_size:
+  value: 16
+bidirectional:
+  value: 0
+cell_type_decoder:
+  value: LSTM
+cell_type_encoder:
+  value: GRU
+dropout:
+  value: 0
+hidden_layer_size:
+  value: 32
+input_embedding_size:
+  value: 128
+num_decoder_layers:
+  value: 4
+num_encoder_layers:
+  value: 4
+teacher_forcing:
+  value: 0.5

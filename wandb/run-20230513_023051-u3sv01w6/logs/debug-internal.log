@@ -1,0 +1,520 @@
+2023-05-13 02:30:51,701 INFO    StreamThr :10220 [internal.py:wandb_internal():87] W&B internal server running at pid: 10220, started at: 2023-05-13 02:30:51.700901
+2023-05-13 02:30:51,702 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status
+2023-05-13 02:30:51,715 INFO    WriterThread:10220 [datastore.py:open_for_write():85] open: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\run-u3sv01w6.wandb
+2023-05-13 02:30:51,716 DEBUG   SenderThread:10220 [sender.py:send():336] send: header
+2023-05-13 02:30:51,770 DEBUG   SenderThread:10220 [sender.py:send():336] send: run
+2023-05-13 02:30:52,508 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: check_version
+2023-05-13 02:30:52,508 INFO    SenderThread:10220 [dir_watcher.py:__init__():216] watching files in: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files
+2023-05-13 02:30:52,508 INFO    SenderThread:10220 [sender.py:_start_run_threads():1067] run started: u3sv01w6 with start time 1683925251.703901
+2023-05-13 02:30:52,508 DEBUG   SenderThread:10220 [sender.py:send_request():363] send_request: summary_record
+2023-05-13 02:30:52,509 INFO    SenderThread:10220 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-05-13 02:30:52,509 DEBUG   SenderThread:10220 [sender.py:send_request():363] send_request: check_version
+2023-05-13 02:30:52,603 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: run_start
+2023-05-13 02:30:52,627 DEBUG   HandlerThread:10220 [system_info.py:__init__():31] System info init
+2023-05-13 02:30:52,627 DEBUG   HandlerThread:10220 [system_info.py:__init__():46] System info init done
+2023-05-13 02:30:52,627 INFO    HandlerThread:10220 [system_monitor.py:start():151] Starting system monitor
+2023-05-13 02:30:52,627 INFO    SystemMonitor:10220 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2023-05-13 02:30:52,627 INFO    HandlerThread:10220 [system_monitor.py:probe():172] Collecting system info
+2023-05-13 02:30:52,633 INFO    SystemMonitor:10220 [interfaces.py:start():168] Started cpu
+2023-05-13 02:30:52,633 INFO    SystemMonitor:10220 [interfaces.py:start():168] Started disk
+2023-05-13 02:30:52,633 INFO    SystemMonitor:10220 [interfaces.py:start():168] Started gpu
+2023-05-13 02:30:52,634 INFO    SystemMonitor:10220 [interfaces.py:start():168] Started memory
+2023-05-13 02:30:52,642 INFO    SystemMonitor:10220 [interfaces.py:start():168] Started network
+2023-05-13 02:30:52,655 DEBUG   HandlerThread:10220 [system_info.py:probe():195] Probing system
+2023-05-13 02:30:52,656 DEBUG   HandlerThread:10220 [system_info.py:_probe_git():180] Probing git
+2023-05-13 02:30:52,658 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:30:52,756 DEBUG   HandlerThread:10220 [system_info.py:_probe_git():188] Probing git done
+2023-05-13 02:30:52,757 DEBUG   HandlerThread:10220 [system_info.py:probe():241] Probing system done
+2023-05-13 02:30:52,757 DEBUG   HandlerThread:10220 [system_monitor.py:probe():181] {'os': 'Windows-10-10.0.25309-SP0', 'python': '3.9.6', 'heartbeatAt': '2023-05-12T21:00:52.655691', 'startedAt': '2023-05-12T21:00:51.686357', 'docker': None, 'cuda': None, 'args': None, 'state': 'running', 'program': '<python with no main file>', 'git': {'remote': 'https://github.com/palashbehra5/cs6910_assignment3.git', 'commit': 'cee2a3c8bed6b43065e4a9337c7e9a8df1e33aa2'}, 'email': '40783095+palashbehra5@users.noreply.github.com', 'root': 'C:/Users/palas/Desktop/IOT/cs6910_assignment3', 'host': 'MSI', 'username': 'palas', 'executable': 'c:\\Users\\palas\\AppData\\Local\\Programs\\Python\\Python39\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2592.0, 'min': 0.0, 'max': 2592.0}, 'cpu_freq_per_core': [{'current': 2592.0, 'min': 0.0, 'max': 2592.0}], 'disk': {'total': 237.17675399780273, 'used': 205.61774063110352}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.824417114257812}}
+2023-05-13 02:30:52,757 INFO    HandlerThread:10220 [system_monitor.py:probe():182] Finished collecting system info
+2023-05-13 02:30:52,757 INFO    HandlerThread:10220 [system_monitor.py:probe():185] Publishing system info
+2023-05-13 02:30:52,757 DEBUG   HandlerThread:10220 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-05-13 02:30:52,759 DEBUG   HandlerThread:10220 [system_info.py:_save_pip():67] Saving pip packages done
+2023-05-13 02:30:52,759 INFO    HandlerThread:10220 [system_monitor.py:probe():187] Finished publishing system info
+2023-05-13 02:30:52,771 DEBUG   SenderThread:10220 [sender.py:send():336] send: files
+2023-05-13 02:30:52,771 INFO    SenderThread:10220 [sender.py:_save_file():1321] saving file wandb-metadata.json with policy now
+2023-05-13 02:30:52,787 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-13 02:30:52,787 DEBUG   SenderThread:10220 [sender.py:send_request():363] send_request: stop_status
+2023-05-13 02:30:53,077 DEBUG   SenderThread:10220 [sender.py:send():336] send: telemetry
+2023-05-13 02:30:53,077 DEBUG   SenderThread:10220 [sender.py:send():336] send: telemetry
+2023-05-13 02:30:53,077 DEBUG   SenderThread:10220 [sender.py:send():336] send: run
+2023-05-13 02:30:53,442 INFO    SenderThread:10220 [sender.py:send_run():944] updated run: u3sv01w6
+2023-05-13 02:30:53,511 INFO    Thread-17 :10220 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files\config.yaml
+2023-05-13 02:30:53,512 INFO    Thread-17 :10220 [dir_watcher.py:_on_file_created():275] file/dir created: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files\wandb-summary.json
+2023-05-13 02:30:53,512 INFO    Thread-17 :10220 [dir_watcher.py:_on_file_created():275] file/dir created: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files\requirements.txt
+2023-05-13 02:30:53,512 INFO    Thread-17 :10220 [dir_watcher.py:_on_file_created():275] file/dir created: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files\wandb-metadata.json
+2023-05-13 02:30:53,628 INFO    wandb-upload_0:10220 [upload_job.py:push():138] Uploaded file C:\Users\palas\AppData\Local\Temp\tmpq1orspytwandb\kz7vlflz-wandb-metadata.json
+2023-05-13 02:30:54,664 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:30:56,685 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:30:57,481 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:30:58,707 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:00,720 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:02,510 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:02,735 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:04,754 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:06,777 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:07,536 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:07,787 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:07,787 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:08,792 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:10,804 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:12,549 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:12,819 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:12,829 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:14,828 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:16,848 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:17,574 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:17,888 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:18,859 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:20,878 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:22,633 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:22,935 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:22,936 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:23,721 INFO    Thread-17 :10220 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files\config.yaml
+2023-05-13 02:31:24,949 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:26,961 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:27,967 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:28,030 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:28,981 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:30,989 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:32,998 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:33,007 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:33,070 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:35,015 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:37,031 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:38,064 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:38,111 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:39,050 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:41,070 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:43,080 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:43,120 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:43,166 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:45,101 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:47,114 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:48,160 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:48,206 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:49,127 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:51,146 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:52,646 DEBUG   SystemMonitor:10220 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2023-05-13 02:31:52,647 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:31:53,209 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:53,210 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:53,647 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:55,227 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:57,233 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:31:58,272 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:31:58,711 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:31:59,251 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:01,266 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:03,278 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:03,301 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:03,757 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:05,304 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:07,322 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:08,346 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:08,797 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:09,334 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:11,347 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:13,366 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:13,406 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:13,841 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:15,374 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:17,393 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:18,461 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:18,883 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:19,404 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:21,416 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:22,655 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:32:23,462 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:23,526 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:24,680 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:25,478 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:27,500 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:28,551 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:29,512 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:29,738 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:31,527 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:33,537 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:33,593 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:34,766 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:35,551 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:37,561 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:38,619 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:39,583 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:39,796 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:41,595 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:43,603 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:43,645 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:44,817 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:45,610 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:47,624 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:48,664 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:49,645 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:49,844 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:51,663 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:52,664 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:32:53,711 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:53,711 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:55,706 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:32:55,727 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:57,737 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:32:58,763 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:32:59,757 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:00,751 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:01,777 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:03,783 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:03,789 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:05,776 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:05,797 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:07,820 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:08,817 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:09,830 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:10,822 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:11,849 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:13,851 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:13,859 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:15,850 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:15,871 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:17,882 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:18,879 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:19,890 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:20,875 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:21,901 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:22,673 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:33:23,896 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:23,958 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:25,972 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:26,687 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:27,992 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:28,913 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:30,001 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:31,703 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:32,019 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:33,942 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:34,027 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:36,036 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:36,719 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:38,058 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:38,974 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:40,078 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:41,749 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:42,084 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:43,993 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:44,093 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:46,108 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:46,773 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:48,120 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:49,024 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:50,128 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:51,804 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:52,139 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:52,681 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:33:54,043 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:33:54,202 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:56,214 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:57,697 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:33:58,222 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:33:59,061 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:00,243 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:02,250 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:02,712 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:04,088 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:04,270 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:06,285 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:07,736 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:08,306 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:09,118 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:10,321 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:12,342 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:12,762 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:14,155 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:14,364 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:16,371 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:17,791 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:18,390 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:19,194 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:20,408 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:22,417 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:22,694 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:34:23,702 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:24,222 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:24,475 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:26,495 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:28,502 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:28,733 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:29,248 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:30,512 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:32,518 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:33,756 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:34,273 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:34,531 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:36,539 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:38,558 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:38,788 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:39,309 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:40,572 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:42,587 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:43,817 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:44,333 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:44,614 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:46,628 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:48,640 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:48,836 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:49,351 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:50,654 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:52,675 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:52,700 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:34:54,373 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:54,720 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:34:54,738 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:56,757 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:58,770 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:34:59,405 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:34:59,751 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:00,779 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:02,788 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:04,431 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:04,774 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:04,796 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:06,815 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:08,834 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:09,474 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:09,805 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:10,843 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:12,855 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:14,495 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:14,824 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:14,872 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:16,888 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:18,902 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:19,527 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:19,852 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:20,915 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:22,707 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:35:22,933 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:24,564 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:25,000 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:25,739 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:27,017 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:29,035 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:29,603 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:30,761 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:31,052 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:33,066 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:34,634 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:35,082 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:35,808 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:37,099 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:39,114 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:39,655 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:40,833 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:41,136 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:43,146 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:44,699 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:45,157 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:45,902 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:46,761 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-13 02:35:46,762 DEBUG   SenderThread:10220 [sender.py:send():336] send: history
+2023-05-13 02:35:46,762 DEBUG   SenderThread:10220 [sender.py:send_request():363] send_request: summary_record
+2023-05-13 02:35:46,764 INFO    SenderThread:10220 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-05-13 02:35:47,178 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:47,513 INFO    Thread-17 :10220 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\palas\Desktop\IOT\cs6910_assignment3\wandb\run-20230513_023051-u3sv01w6\files\wandb-summary.json
+2023-05-13 02:35:49,195 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:49,736 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:51,215 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:51,806 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:52,719 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:35:53,225 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:54,768 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:35:55,283 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:57,298 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:57,745 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:35:59,310 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:35:59,798 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:01,323 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:02,783 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:03,336 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:04,833 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:05,355 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:07,369 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:07,819 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:09,385 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:09,867 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:11,397 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:12,843 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:13,407 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:14,902 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:15,425 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:17,436 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:17,884 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:19,452 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:19,933 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:21,460 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:22,725 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:36:23,483 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:23,728 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:24,936 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:25,533 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:27,549 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:28,748 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:29,567 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:29,983 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:31,588 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:33,603 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:33,799 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:35,033 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:35,618 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:37,636 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:38,845 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:39,647 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:40,077 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:41,658 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:43,671 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:43,900 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:45,105 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:45,691 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:47,709 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:48,935 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:49,720 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:50,156 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:51,741 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:52,727 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:36:53,748 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:54,748 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:55,192 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:36:55,809 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:57,820 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:36:59,779 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:36:59,832 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:00,218 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:01,838 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:03,851 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:04,802 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:05,244 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:05,864 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:07,875 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:09,842 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:09,896 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:10,282 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:11,915 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:13,929 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:14,875 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:15,313 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:15,943 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:17,953 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:19,904 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:19,974 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:20,359 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:21,981 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:22,730 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:37:24,000 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:25,386 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:25,760 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:26,062 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:28,079 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:30,101 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:30,418 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:30,795 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:32,114 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:34,124 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:35,435 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:35,811 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:36,134 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:38,146 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:40,160 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:40,473 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:40,840 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:42,173 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:44,192 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:45,515 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:45,882 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:46,218 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:48,235 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:50,250 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:50,554 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:50,923 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:52,273 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:52,744 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:37:54,279 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:55,592 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:37:56,329 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:37:56,777 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:37:58,342 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:00,350 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:00,631 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:01,814 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:02,361 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:04,381 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:05,668 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:06,387 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:06,851 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:08,393 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:10,410 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:10,710 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:11,886 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:12,414 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:14,427 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:15,755 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:16,437 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:16,915 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:18,458 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:20,467 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:20,801 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:21,950 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:22,482 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:22,757 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:38:24,503 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:25,844 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:26,555 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:27,796 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:28,565 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:30,583 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:30,890 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:32,596 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:32,836 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:34,615 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:35,916 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:36,636 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:37,879 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:38,643 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:40,663 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:40,954 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:42,678 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:42,906 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:44,698 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:45,994 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:46,707 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:47,962 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:48,717 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:50,729 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:51,020 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:52,745 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:52,771 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:38:53,783 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:54,757 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:56,016 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:38:56,846 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:38:58,832 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:38:58,848 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:00,855 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:01,064 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:39:02,871 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:03,848 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:39:04,892 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:06,103 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:39:06,916 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:08,894 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:39:08,932 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:10,952 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:11,160 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:39:12,964 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:13,935 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:39:14,984 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:16,206 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:39:16,991 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:18,982 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: status_report
+2023-05-13 02:39:18,999 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:21,022 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported
+2023-05-13 02:39:21,238 DEBUG   HandlerThread:10220 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-13 02:39:22,785 DEBUG   SenderThread:10220 [sender.py:send():336] send: stats
+2023-05-13 02:39:23,034 ERROR   gpu       :10220 [interfaces.py:monitor():129] Failed to sample metric: Not Supported

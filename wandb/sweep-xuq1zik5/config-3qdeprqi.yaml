@@ -1,0 +1,22 @@
+wandb_version: 1
+
+batch_size:
+  value: 256
+bidirectional:
+  value: 1
+cell_type_decoder:
+  value: RNN
+cell_type_encoder:
+  value: RNN
+dropout:
+  value: 0
+hidden_layer_size:
+  value: 64
+input_embedding_size:
+  value: 128
+num_decoder_layers:
+  value: 5
+num_encoder_layers:
+  value: 6
+teacher_forcing:
+  value: 0.75

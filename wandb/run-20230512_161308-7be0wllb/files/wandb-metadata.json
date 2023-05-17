@@ -1,0 +1,49 @@
+{
+    "os": "Windows-10-10.0.25309-SP0",
+    "python": "3.9.6",
+    "heartbeatAt": "2023-05-12T10:43:09.438615",
+    "startedAt": "2023-05-12T10:43:08.399542",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/palashbehra5/cs6910_assignment3.git",
+        "commit": "cee2a3c8bed6b43065e4a9337c7e9a8df1e33aa2"
+    },
+    "email": "40783095+palashbehra5@users.noreply.github.com",
+    "root": "C:/Users/palas/Desktop/IOT/cs6910_assignment3",
+    "host": "MSI",
+    "username": "palas",
+    "executable": "c:\\Users\\palas\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2592.0,
+        "min": 0.0,
+        "max": 2592.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2592.0,
+            "min": 0.0,
+            "max": 2592.0
+        }
+    ],
+    "disk": {
+        "total": 237.17675399780273,
+        "used": 203.90411376953125
+    },
+    "gpu": "NVIDIA GeForce RTX 2060",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2060",
+            "memory_total": 6442450944
+        }
+    ],
+    "memory": {
+        "total": 15.824417114257812
+    }
+}
