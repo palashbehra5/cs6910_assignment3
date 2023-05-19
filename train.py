@@ -48,10 +48,10 @@ EPOCHS = training_params["epochs"]
 NUM_LAYERS_ENCODER = model_params["num_layers_encoder"]
 NUM_LAYERS_DECODER = model_params["num_layers_decoder"]
 DROPOUT = model_params["dropout"]
-BIDIRECTIONAL = model_params["bidirectional"]
+BIDIRECTIONAL = model_params["bi_directional"]
 CELL_TYPE_ENCODER = model_params["encoder_cell"]
 CELL_TYPE_DECODER = model_params["decoder_cell"]
-TEACHER_FORCING = model_params["teacher_forcing"]
+TEACHER_FORCING = training_params["teacher_forcing"]
 MAX_SEQ_SIZE = model_params["max_seq_size"]
 
 model = train(VOCAB_SIZE, EMBEDDING_DIM, HIDDEN_DIM, NUM_LAYERS_ENCODER, NUM_LAYERS_DECODER, DROPOUT, BIDIRECTIONAL, 
