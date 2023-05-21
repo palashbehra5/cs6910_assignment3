@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ```
 Run the code:
 
-    python main.py [arguments]
+    python train.py [arguments]
 
 Arguments
 
